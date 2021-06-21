@@ -25,8 +25,43 @@ function addName() {
   nameElement.innerText = 'Ellie!';
 }
 
+
 function addFavoriteThings() {
-  console.log('Called addFavoriteThings()');
+  console.log('Called addFavortieThings()');
+  let favortieThings = document.querySelector('#favthings');
+  console.log(favortieThings);
+  /*favortieThings.innerHTML=
+  <li>sleeping</li>
+  <li>sailing</li>
+  <li>netflix</li>; */
+
+let favethingsList = ["sleeping", "sailing", "netflix"];
+
+for (let item of favethingsList){
+  console.log('Crossing off' + item); 
+  let li = document.createElement('li');
+  li.innerText = item;
+  favortieThings.appendChild(li);
+}
+
+
+/*
+  const menu = document.querySelector('#favthings');
+
+
+  let li = document.createElement('li');
+  li.textContent = 'sailing';
+  menu.appendChild(li);
+  
+  li = document.createElement('li');
+  li.textContent = 'sleeping';
+  menu.appendChild(li);
+
+  li = document.createElement('li');
+  li.textContent = 'netflix';
+  menu.appendChild(li);
+    
+*/ 
 
   // 1. Get a reference to <ul id="favthings">
   // 2. Create a few list items representing your favorite things
@@ -40,6 +75,9 @@ function addFavoriteThings() {
 
 function replaceImage() {
   console.log('Called replaceImage()');
+  let image = document.querySelector ("#picture");
+  console.log(image);
+  image.setAttribute("src", "Dog.jpg");
 
   // Change the puppy picture to a picture of your choosing
 
@@ -49,7 +87,14 @@ function replaceImage() {
 }
 
 function changeCodeStatus() {
-  console.log('Called changeCodeStatus()');
+    console.log('Called changeCodeStatus()');
+  let codeStatus = document.getElementById("codestatus");
+  let newIMG = document.createElement('img');
+  newIMG.setAttribute("src","Friends.gif");
+   codeStatus.appendChild(newIMG);
+
+  /*codeStatus.innerHTML = '<img src = "Friends.gif"'*/
+ 
 
   // 1. Get a reference to <div id="codestatus">
   // 2. Create image element containing a sweet ol' meme
@@ -87,9 +132,23 @@ let informationForm = document.querySelector('#information-form');
 // Do something when form is submitted
 informationForm.addEventListener('submit', function(event) {
   event.preventDefault(); // You will want this here. Remove it and see what changes.
+  
+  //var nameValue = document.getElementById("fname").value;
+  
+  console.log(event.target);
+  const formData = new FormData(event.target);
+  console.log(formData);
+  const formProps = Object.fromEntries(formData);
+  console.log(formProps);
 
+  document.getElementById("firstname").innerHTML = formProps.fname;
+  document.getElementById("lastname").innerHTML = formProps.lname;
+  document.getElementById("chosencar").innerHTML = formProps.cars;
+  document.getElementById("icecreamstatus").innerHTML = formProps.icecream;  
   console.log('Form submitted');
 
+    
+    }
   // Your job:
   //   1. Get information typed into the form
   //   2. Display that info in "Display that info here" section
