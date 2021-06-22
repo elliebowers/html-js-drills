@@ -170,23 +170,23 @@ informationForm.addEventListener('submit', function(event) {
 // then log something to the console
 
 // Fill in ________ to get a reference to the correct button on the page
-let consoleLogButton = document.querySelector('#________');
+  let consoleLogButton = document.querySelector('#________');
 
 // Log something when that button is clicked
-consoleLogButton.addEventListener('click', function() {
+  consoleLogButton.addEventListener('click', function() {
   console.log('Change this text if you want!');
-});
+  });
 
-let makeBlueButton = document.querySelector('#________');
-makeBlueButton.addEventListener('click', function() {
+  let makeBlueButton = document.querySelector('#________');
+  makeBlueButton.addEventListener('click', function() {
   // Your job:
   //  1. When a user clicks "Change the text to the right blue"
   //  2. Change the text in <div id="colorText">...</div> to blue
-});
+  });
 
 // Adding an event listener to document means the "keydown" event
 // can happen anywhere on the page and we'll respond.
-document.addeventListener('keydown', function() {
+  document.addeventListener('keydown', function() {
   // This is called whenever a user pressed any key.
 
   // Your job:
@@ -196,7 +196,7 @@ document.addeventListener('keydown', function() {
   // See:
   // - https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
   // - https://javascript.info/keyboard-events
-});
+  });
 
 /*************************************
  * Section 4 - TODO List             *
@@ -231,6 +231,20 @@ document.addeventListener('keydown', function() {
  *   - https://javascript.info/settimeout-setinterval
  *
  */
+  let secondsDiv = document.querySelector("#seconds");
+  let counter =0;
+  let timerId = setInterval(() => {
+    counter++;
+    secondsDiv.innerHTML=counter;
+   }, 1000);
+
+  let displayDiv = document.querySelector("#delayedDisplay")
+  
+  setTimeout(() => {  
+    displayDiv.innerHTML = "FIVE SECONDS HAS PASSED"; 
+    clearInterval(timerId);
+  } , 5,000)
+
 
 // Your code goes here
 
